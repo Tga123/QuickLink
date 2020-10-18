@@ -3,11 +3,12 @@
 ## Title: QuickLink
 ## Notes: Adds Quicklinks for Armory and other WoW related sites to player popups and LFG and Friendlist
 ## Author: gentoomaniac & TGA123
-## Version: 9.0.0
+## Version: 9.0.1-1.0
 ## SavedVariables: QuickLinkPages
 ## Dependencies: Ace3
 
-locales\locales.xml
+locales\enUS.lua
+locales\ruRU.lua
 
 QuickLinkFrame.xml
 

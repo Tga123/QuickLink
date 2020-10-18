@@ -1,12 +1,11 @@
-﻿## Interface: 80100
+## Interface: 90001
+## X-Min-Interface: 90001
 ## Title: QuickLink
 ## Notes: Adds Quicklinks for Armory and other WoW related sites to player popups and LFG and Friendlist
-## Author: gentoomaniac
-## Version: 8.1.0-1.0.0
+## Author: gentoomaniac & TGA123
+## Version: 9.0.0
 ## SavedVariables: QuickLinkPages
-
-embeds.xml
-libs\LibRealmInfo\LibRealmInfo.lua
+## Dependencies: Ace3
 
 locales\locales.xml
 

@@ -5,8 +5,9 @@ local L = LibStub("AceLocale-3.0"):GetLocale("QuickLink", true)
 -- There must be a better way!
 function QuickLink_BNET:FriendsFrame_ShowBNDropdown(name, connected, lineID, chatType, chatFrame, friendsList, bnetIDAccount)
 	local index = nil
+
+	local client = C_BattleNet.GetAccountInfoByID(bnetIDAccount).gameAccountInfo.clientProgram
 	
-	local _, _, _, _, _, _, client, _, _, _, _, _, _, _, _, _, _, _ = BNGetFriendInfoByID(bnetIDAccount)
 	for i, value in pairs(UnitPopupMenus["BN_FRIEND"]) do
 		if value == "QUICKLINK" then
 			index = i

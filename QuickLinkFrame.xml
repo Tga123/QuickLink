@@ -1,6 +1,6 @@
 <Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
     <Script file="core.lua" />
-    <Frame name="QuickLinkFrame" parent="UIParent" toplevel="true" enableMouse="true" hidden="true">
+    <Frame name="QuickLinkFrame" parent="UIParent" toplevel="true" enableMouse="true" hidden="true" inherits="BackdropTemplate">
         <Size>
             <AbsDimension x="600" y="138" />
         </Size>
@@ -9,17 +9,9 @@
                 <Offset x="0" y="126" />
             </Anchor>
         </Anchors>
-        <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
-            <BackgroundInsets>
-                <AbsInset left="11" right="12" top="12" bottom="11" />
-            </BackgroundInsets>
-            <TileSize>
-                <AbsValue val="32" />
-            </TileSize>
-            <EdgeSize>
-                <AbsValue val="32" />
-            </EdgeSize>
-        </Backdrop>
+		<KeyValues>
+			<KeyValue key="backdropInfo" value="BACKDROP_GOLD_DIALOG_32_32" type="global"/>
+		</KeyValues>
         <Frames>
             <EditBox name="linkEditBox" inherits="InputBoxTemplate">
                 <Size>

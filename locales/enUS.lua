@@ -3,7 +3,10 @@ if L then
     L["ADDONNAME"] = "QuickLink"
     L["REGIONERROR"] = "Couldn't find region!"
     L["REALMERROR"] = "Couldn't find server!"
-    L["LANGUAGE"] = "en"
+    L["LANGUAGEHYPHENFULL"] = "en-US"
+	L["LANGUAGEFULL"] = "enUS"
+	L["LANGUAGESHORT"] = "en"
+	
     
     L['YES'] = "yes"
     L['NO'] = "no"
@@ -22,10 +25,12 @@ if L then
     L['OPTION_DEFAULT_NAME'] = "Site Name"
     L['OPTION_DEFAULT_URL'] = ""
     L['OPTION_DESCRIPTION'] = [[You can use the following placeholders in the url:
-{LANGUAGE}   - The language of the page, derived from your localization
-{NAME}       - The character name
-{REALM}      - The realm name the character is on
-{REGION}     - The region the character is in (EU / US / ...)
+	
+{LANGUAGEHYPHENFULL},{LANGUAGEFULL},{LANGUAGESHORT} - The language shortcodes, in different formats. 
+  Like: en-US, enUS, en. Based on addon locale.
+{NAME} - The character name.
+{REALM} - The realm name of the character is on.
+{REGION} - The region of your game client is in (EU / US / ...).
 ]]
     
     L['POPUP_DELETECONFIRMATION_QUESTION'] = function(name)

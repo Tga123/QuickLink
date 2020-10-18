@@ -3,15 +3,14 @@ QuickLink = LibStub("AceAddon-3.0"):NewAddon("QuickLink", "AceConsole-3.0", "Ace
 local L = LibStub("AceLocale-3.0"):GetLocale("QuickLink", true)
 local AceConfig = LibStub("AceConfig-3.0")
 
-local LRI = LibStub:GetLibrary("LibRealmInfo");
-
 -- default config settings
 local QuickLink_defaultPages = {
-    { name = "Armory", url = "http://worldofwarcraft.com/{LANGUAGE}/character/{REALM}/{NAME}", enabled = true },
-    { name = "Old Armory", url = "http://{REGION}.battle.net/wow/{LANGUAGE}/character/{REALM}/{NAME}/advanced", enabled = false },
-    { name = "Ask Mr. Robot", url = "http://www.askmrrobot.com/wow/gear/{REGION}/{REALM}/{NAME}", enabled = true },
-    { name = "Guildox", url = "http://guildox.com/toon/{REGION}/{REALM}/{NAME}", enabled = true },
-    { name = "WOW Progress", url = "http://www.wowprogress.com/character/{REGION}/{REALM}/{NAME}", enabled = true },
+    { name = "Armory", url = "https://worldofwarcraft.com/{LANGUAGEHYPHENFULL}/character/{REGION}/{REALM}/{NAME}", enabled = true },
+    { name = "Warcraft Logs", url = "https://www.warcraftlogs.com/character/{REGION}/{REALM}/{NAME}", enabled = true },
+	{ name = "Raider.io", url = "https://raider.io/characters/{REGION}/{REALM}/{NAME}", enabled = true },
+    { name = "WOW Progress", url = "https://www.wowprogress.com/character/{REGION}/{REALM}/{NAME}", enabled = true },
+	{ name = "Raidbots", url = "https://www.raidbots.com/simbot/quick?region={REGION}&realm={REALM}&name={NAME}", enabled = true },
+    { name = "Ask Mr. Robot", url = "https://www.askmrrobot.com/wow/gear/{REGION}/{REALM}/{NAME}", enabled = true },
 }
 
 StaticPopupDialogs["QUICKLINK_DELETE"] = {
@@ -46,8 +45,8 @@ local function getUrl(urltemplate, name, server)
 
   if not name or name == "" then return end
   if not server or server == "" then server = GetRealmName() end
-
-  local _,realm,_,_,_,_,region = LRI:GetRealmInfo(server)
+  local realm = server
+  local region = GetCurrentRegionName()
 
   if not region or region == "" then
     QuickLink:Print(L['REGIONERROR'])
@@ -62,11 +61,13 @@ local function getUrl(urltemplate, name, server)
   realm = realm:gsub(" ","-");
 
   url,_ = string.gsub(urltemplate, "{REGION}", region)
-  url,_ = string.gsub(url, "{LANGUAGE}", L["LANGUAGE"])
+  url,_ = string.gsub(url, "{LANGUAGEHYPHENFULL}", L["LANGUAGEHYPHENFULL"])
+  url,_ = string.gsub(url, "{LANGUAGEFULL}", L["LANGUAGEFULL"])
+  url,_ = string.gsub(url, "{LANGUAGESHORT}", L["LANGUAGESHORT"])
   url,_ = string.gsub(url, "{REALM}", realm)
   url,_ = string.gsub(url, "{NAME}", name)
   if url then
-    url = urlEscape(url);
+    url = urlEscape(string.lower(url));
   end
 
   return url;

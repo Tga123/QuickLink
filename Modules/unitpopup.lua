@@ -35,8 +35,7 @@ function QuickLink_UNIT_POPUP:UnitPopup_OnClick(self)
 	local name,server
 	if matches == 1 then
 		if menu['bnetIDAccount'] then  -- a bit hackish detection if we are in the BNet friendlist
-			local client = C_BattleNet.GetAccountInfoByID(menu['bnetIDAccount']).gameAccountInfo.clientProgram
-			if client == BNET_CLIENT_WOW then
+			if C_BattleNet.GetAccountInfoByID(menu['bnetIDAccount']).gameAccountInfo.clientProgram == BNET_CLIENT_WOW then
 				name = C_BattleNet.GetAccountInfoByID(menu['bnetIDAccount']).gameAccountInfo.characterName
 				server = C_BattleNet.GetAccountInfoByID(menu['bnetIDAccount']).gameAccountInfo.realmName
 			end
